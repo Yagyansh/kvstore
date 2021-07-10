@@ -1,8 +1,7 @@
-import flask
 import pickle
-from flask import Flask, redirect, url_for, request
+from flask import Flask, request
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
@@ -39,6 +38,10 @@ def get_value():
     else:
         return "Error: No KEY provided."
     return store[key]
+
+@app.route('/get_all', methods=['GET'])
+def get_all():
+    return store
 
 #Load the dumped data everytime the API starts.
 datatoload = open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","rb")
