@@ -8,11 +8,11 @@ Basic KV store web application & CLI Interface written in Python. It has 2 compo
    c. `/get_all` - This displays all the available KV pairs in the store.  
 2. CLI Interface - This is a CLI shell that consumes the WEB API and performs actions over the KV store.  
    a. `get <key>` - Output the values of the provided key from the KV store.  
-   b. `set <key> <value>` - Add the KV pair to the KV store.  
+   b. `put <key> <value>` - Add the KV pair to the KV store.  
    c. `watch` - Subscribe to the changes happening to the KV store.  
    d. `getall` - This displays all the available KV pairs in the store.  
   
-This project contains 2 major python files and 1 pickle data file to introduce data persistance.
+This project contains 2 python files and 1 pickle data file to handle data persistance.
 1. kvstore.py - This implements the Web API functionality of the project.
 2. kv-cli.py - This implements the CLI client created to consume the KV Store Web Server.
 3. store.pickle - This stores the KV pairs that are added to the KV Store. It is loaded once at the start of the API.
@@ -36,7 +36,7 @@ This project contains 2 major python files and 1 pickle data file to introduce d
   1. `$ python3.8 kv-cli.py`  
       CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
       ```
-      kvstore> set test 1  
+      kvstore> put test 1  
       b'Successfully added Value - 1 for Key - test'  
       kvstore> get test  
       b'1'
@@ -53,8 +53,9 @@ This project contains 2 major python files and 1 pickle data file to introduce d
      `$ python3.8 kv-cli.py`  
         CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
         ```
-        kvstore> watch  
+        kvstore> put test 1    
         b'Successfully added Value - 1 for Key - test'  
+        kvstore> put test1 2  
         b'Successfully added Value - 2 for Key - test1'  
         ```      
   3. Help to see all the commands.  
@@ -65,5 +66,5 @@ This project contains 2 major python files and 1 pickle data file to introduce d
 
          Documented commands (type help <topic>):
          ========================================
-         EOF  get  help  quit  set  watch getall
+         EOF  get  help  quit  put  watch getall
         ```
