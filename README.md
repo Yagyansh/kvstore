@@ -27,7 +27,7 @@ This project contains 2 python files and 1 pickle data file to handle data persi
   
   Start the Web Server (Default Port - 5000)  
   `$ python3.8 kvstore.py`  
-  To run the Web Server in background in Linux - `$ nohup python3 kvstore.py &`  
+  To run the Web Server in background in Linux - `$ nohup python3.8 kvstore.py &`  
   
   Use the CLI Shell  
   `$ python3.8 kv-cli.py`  
@@ -40,6 +40,7 @@ This project contains 2 python files and 1 pickle data file to handle data persi
       b'Successfully added Value - 1 for Key - test'  
       kvstore> get test  
       b'1'
+      kvstore>  
       ```
       
   2. Invoke 2 simultaneous CLI shells - one for watch and another to make changes to KV.  
@@ -49,6 +50,9 @@ This project contains 2 python files and 1 pickle data file to handle data persi
       kvstore> watch  
       b'Successfully added Value - 1 for Key - test'  
       b'Successfully added Value - 2 for Key - test1'  
+      ^C  
+      Got keyboard interrupt, exiting!!  
+      kvstore>  
       ```
      `$ python3.8 kv-cli.py`  
         CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
@@ -57,6 +61,7 @@ This project contains 2 python files and 1 pickle data file to handle data persi
         b'Successfully added Value - 1 for Key - test'  
         kvstore> put test1 2  
         b'Successfully added Value - 2 for Key - test1'  
+        kvstore>  
         ```      
   3. Help to see all the commands.  
        `$ python3.8 kv-cli.py`  
@@ -66,5 +71,6 @@ This project contains 2 python files and 1 pickle data file to handle data persi
 
          Documented commands (type help <topic>):
          ========================================
-         EOF  get  help  quit  put  watch getall
+         EOF  get  help  quit  put  watch getall  
+        kvstore>  
         ```
