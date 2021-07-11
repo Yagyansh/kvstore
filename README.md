@@ -24,8 +24,8 @@ This project contains 2 major python files and 1 pickle data file to introduce d
   Download the requirements file and install the required libraries using pip.  
   `$ python3 -m pip install -r requirement.txt`  
   
-  Start the Web API  
-  `$ python3 kvstore.py`  
+  Start the Web API in background  
+  `$ nohup python3 kvstore.py &`    
   
   Use the CLI Shell  
   `$ python3 kv-cli.py`  
