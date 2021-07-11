@@ -19,7 +19,7 @@ class KVShell(cmd.Cmd):
             response = requests.get(api_url,params=params)
             print(response.content)
         else:
-            print("Error: Incorret Input! Please follow the syntax - get <key>")
+            print("Error: Incorrect Input! Please follow the syntax - get <key>")
 
 #Description for the get function mentioned above.
     def help_get(self):
@@ -57,13 +57,16 @@ class KVShell(cmd.Cmd):
         """Subcribe to the changes happening in the KV store."""
         global server_ip
         global server_port
-        sock = socket.socket()
-        sock.bind((server_ip,server_port))
-        sock.listen(5)
-        while True: 
-            client,addr = sock.accept()
-            print(client.recv(1024))
-            client.close()
+        try:
+            sock = socket.socket()
+            sock.bind((server_ip,server_port))
+            sock.listen(5)
+            while True: 
+                client,addr = sock.accept()
+                print(client.recv(1024))
+                client.close()
+        except KeyboardInterrupt:
+            print("\nGot keyboard interrupt, exiting!!")
 
 #CLI command to exit from the CLI shell.            
     def do_quit(self, line):
@@ -74,6 +77,13 @@ class KVShell(cmd.Cmd):
     def do_EOF(self, line):
         """To exit the shell."""
         return True
+
+#Get all items in the KV store.
+    def do_getall(self,line):
+        """Get all the KV pairs in the store."""
+        api_url = 'http://127.0.0.1:5000/get_all'
+        response = requests.get(api_url)
+        print(response.content)
 
 if __name__ == '__main__':
     KVShell().cmdloop()
