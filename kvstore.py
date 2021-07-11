@@ -3,6 +3,7 @@ from flask import Flask, request
 from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
+port = 5000
 
 @app.route('/', methods=['GET'])
 def kvhome():
@@ -10,7 +11,7 @@ def kvhome():
 
 #To dump serialize and dump the dictionary data to a file using pickle to have persistance in the data.
 def dump_data_for_cache(store):
-    with open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","wb") as handle:
+    with open("store.pickle","wb") as handle:
         pickle.dump(store,handle,protocol=pickle.HIGHEST_PROTOCOL)
 
 #Helper to add KV pair to our store.
@@ -51,8 +52,8 @@ def get_all():
     return store
 
 #Load the dumped data everytime the API starts.
-datatoload = open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","rb")
+datatoload = open("store.pickle","rb")
 store = pickle.load(datatoload)
 
-http_server = WSGIServer(('127.0.0.1', 5000),app)
+http_server = WSGIServer(('127.0.0.1',port),app)
 http_server.serve_forever()
