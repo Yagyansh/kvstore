@@ -1,5 +1,6 @@
 import pickle
 from flask import Flask, request
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 
@@ -52,4 +53,6 @@ def get_all():
 #Load the dumped data everytime the API starts.
 datatoload = open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","rb")
 store = pickle.load(datatoload)
-app.run()
+
+http_server = WSGIServer(('127.0.0.1', 5000), app)
+http_server.serve_forever()
