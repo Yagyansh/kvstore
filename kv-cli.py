@@ -27,7 +27,7 @@ class KVShell(cmd.Cmd):
         print("Syntax - get <key>")
 
 #CLI commnd to add value for a particular key in the KV Store.
-    def do_set(self,input):
+    def do_put(self,input):
         global server_port
         global server_ip
         if len(input.split()) == 2:
@@ -48,7 +48,7 @@ class KVShell(cmd.Cmd):
             print("Error: Incorrect Input! Please follow the syntax - set <key> <value>")
 
 #Description for the set function mentioned above.
-    def help_set(self):
+    def help_put(self):
         print("Set the value of the provided key.")
         print("Syntax - set <key> <value>")
 
