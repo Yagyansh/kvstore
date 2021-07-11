@@ -2,7 +2,7 @@
 
 ## Overview
 Basic KV store web application & CLI Interface written in Python. It has 2 components:
-1. The WEB API - This runs via Python flask web server and has 2 functionalites:  
+1. The WEB Server - This runs via Python flask web server and has 2 functionalites:  
    a. `/get` - This requires an input of the "key" value for which the value has to be retrieved from the KV store.  
    b. `/add` - This requires an input of the "key" and "value" that has to be added to the KV store.  
    c. `/get_all` - This displays all the available KV pairs in the store.  
@@ -13,7 +13,7 @@ Basic KV store web application & CLI Interface written in Python. It has 2 compo
   
 This project contains 2 major python files and 1 pickle data file to introduce data persistance.
 1. kvstore.py - This implements the Web API functionality of the project.
-2. kv-cli.py - This implements the CLI client created to consume the KV Store Web API.
+2. kv-cli.py - This implements the CLI client created to consume the KV Store Web Server.
 3. store.pickle - This stores the KV pairs that are added to the KV Store. It is loaded once at the start of the API.
 
 ## Requirements
@@ -24,8 +24,9 @@ This project contains 2 major python files and 1 pickle data file to introduce d
   Download the requirements file and install the required libraries using pip.  
   `$ python3 -m pip install -r requirement.txt`  
   
-  Start the Web API in background  
-  `$ nohup python3 kvstore.py &`    (Default Port - 5000)
+  Start the Web Server (Default Port - 5000)  
+  `$ python3 kvstore.py`  
+  To run the Web Server in background in Linux - `$ nohup python3 kvstore.py &`  
   
   Use the CLI Shell  
   `$ python3 kv-cli.py`  
