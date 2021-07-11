@@ -17,22 +17,22 @@ This project contains 2 major python files and 1 pickle data file to introduce d
 3. store.pickle - This stores the KV pairs that are added to the KV Store. It is loaded once at the start of the API.
 
 ## Requirements
-  Python v 3.x  
+  Python 3.8.x and above.   
   Libraries used - flask,cmd,requests,pickle,socket,gevent.  
 
 ## Installation and Usage
   Download the requirements file and install the required libraries using pip.  
-  `$ python3 -m pip install -r requirement.txt`  
+  `$ python3.8 -m pip install -r requirement.txt`  
   
   Start the Web Server (Default Port - 5000)  
-  `$ python3 kvstore.py`  
+  `$ python3.8 kvstore.py`  
   To run the Web Server in background in Linux - `$ nohup python3 kvstore.py &`  
   
   Use the CLI Shell  
-  `$ python3 kv-cli.py`  
+  `$ python3.8 kv-cli.py`  
   
 ## Examples
-  1. `$ python3 kv-cli.py`  
+  1. `$ python3.8 kv-cli.py`  
       CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
       ```
       kvstore> set test 1  
@@ -42,14 +42,14 @@ This project contains 2 major python files and 1 pickle data file to introduce d
       ```
       
   2. Invoke 2 simultaneous CLI shells - one for watch and another to make changes to KV.  
-   `$ python3 kv-cli.py`  
+   `$ python3.8 kv-cli.py`  
       CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
       ```
       kvstore> watch  
       b'Successfully added Value - 1 for Key - test'  
       b'Successfully added Value - 2 for Key - test1'  
       ```
-     `$ python3 kv-cli.py`  
+     `$ python3.8 kv-cli.py`  
         CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
         ```
         kvstore> watch  
@@ -57,7 +57,7 @@ This project contains 2 major python files and 1 pickle data file to introduce d
         b'Successfully added Value - 2 for Key - test1'  
         ```      
   3. Help to see all the commands.  
-       `$ python3 kv-cli.py`  
+       `$ python3.8 kv-cli.py`  
         CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
         ```
         kvstore> help  
