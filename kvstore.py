@@ -2,7 +2,6 @@ import pickle
 from flask import Flask, request
 
 app = Flask(__name__)
-app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def kvhome():
@@ -30,7 +29,6 @@ def add_value():
             return "Successfully added Value - %s for Key - %s" % (store[key],key)
     else:
         return "Error: Improper input."
-#add_value.has_been_called = False
 
 #Helper to get the value of provided key from our store.
 @app.route('/get', methods=['GET'])
@@ -54,5 +52,4 @@ def get_all():
 #Load the dumped data everytime the API starts.
 datatoload = open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","rb")
 store = pickle.load(datatoload)
-print(store)
 app.run()
