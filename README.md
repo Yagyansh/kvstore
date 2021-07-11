@@ -25,7 +25,7 @@ This project contains 2 major python files and 1 pickle data file to introduce d
   `$ python3 -m pip install -r requirement.txt`  
   
   Start the Web API in background  
-  `$ nohup python3 kvstore.py &`    
+  `$ nohup python3 kvstore.py &`    (Default Port - 5000)
   
   Use the CLI Shell  
   `$ python3 kv-cli.py`  
