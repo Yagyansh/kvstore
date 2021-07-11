@@ -80,10 +80,17 @@ class KVShell(cmd.Cmd):
 
 #Get all items in the KV store.
     def do_getall(self,line):
-        """Get all the KV pairs in the store."""
-        api_url = 'http://127.0.0.1:5000/get_all'
-        response = requests.get(api_url)
-        print(response.content)
+        if len(line) > 1:
+            print("Incorrect Syntax. Please follow the syntax - getall")
+        else:
+            api_url = 'http://127.0.0.1:5000/get_all'
+            response = requests.get(api_url)
+            print(response.content)
+
+#Description for the above mentioned getall command.
+    def help_getall(self):
+        print("Get all the KV pairs in the store.")
+        print("Syntax - getall")
 
 if __name__ == '__main__':
     KVShell().cmdloop()
