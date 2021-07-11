@@ -14,8 +14,9 @@ def dump_data_for_cache(store):
         pickle.dump(store,handle,protocol=pickle.HIGHEST_PROTOCOL)
 
 #Helper to add KV pair to our store.
-@app.route('/add', methods=['GET'])
+@app.route('/add', methods=['POST'])
 def add_value():
+    global changed
     if 'key' and 'value' in request.args:
         key = str(request.args['key'])
         value = str(request.args['value'])
@@ -29,15 +30,22 @@ def add_value():
             return "Successfully added Value - %s for Key - %s" % (store[key],key)
     else:
         return "Error: Improper input."
+#add_value.has_been_called = False
 
 #Helper to get the value of provided key from our store.
 @app.route('/get', methods=['GET'])
 def get_value():
     if 'key' in request.args:
         key = str(request.args['key'])
+        if not key:
+            return "Error: Empty KEY provided."
+        else:
+            if key in store:
+                return store[key]
+            else:
+                return "Error: Provided key doesn't exists in the store."
     else:
         return "Error: No KEY provided."
-    return store[key]
 
 @app.route('/get_all', methods=['GET'])
 def get_all():
