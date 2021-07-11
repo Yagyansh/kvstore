@@ -54,5 +54,5 @@ def get_all():
 datatoload = open("/home/yagyanshkumar/Grofers-Assignment/store.pickle","rb")
 store = pickle.load(datatoload)
 
-http_server = WSGIServer(('127.0.0.1', 5000), app)
+http_server = WSGIServer(('127.0.0.1', 5000),app)
 http_server.serve_forever()

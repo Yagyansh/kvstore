@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
-
 import cmd
 import requests
 import socket
+import errno
+from socket import error as socket_error
 
 server_ip = '127.0.0.1'
 server_port = 12345
@@ -36,13 +36,16 @@ class KVShell(cmd.Cmd):
             api_url = 'http://127.0.0.1:5000/add'
             response = requests.post(api_url,params=params)
             print(response.content)
-            sock = socket.socket()
-            server_address = (server_ip,server_port)
-            sock.connect(server_address)
-            sock.sendall(response.content)
+            try:
+                sock = socket.socket()
+                server_address = (server_ip,server_port)
+                sock.connect(server_address)
+                sock.sendall(response.content)
+            except socket_error as serr:
+                if serr.errno != errno.ECONNREFUSED:
+                    raise serr
         else:
-            print("Error: Incorret Input! Please follow the syntax - set <key> <value>")
-            #called['setvalue'] = False
+            print("Error: Incorrect Input! Please follow the syntax - set <key> <value>")
 
 #Description for the set function mentioned above.
     def help_set(self):
@@ -71,5 +74,6 @@ class KVShell(cmd.Cmd):
     def do_EOF(self, line):
         """To exit the shell."""
         return True
+
 if __name__ == '__main__':
     KVShell().cmdloop()
