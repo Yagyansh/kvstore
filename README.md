@@ -9,7 +9,7 @@ Basic KV store web application & CLI Interface written in Python. It has 2 compo
 2. CLI Interface - This is a CLI shell that consumes the WEB API and performs actions over the KV store.  
    a. `get <key>` - Output the values of the provided key from the KV store.  
    b. `put <key> <value>` - Add the KV pair to the KV store.  
-   c. `watch` - Subscribe to the changes happening to the KV store.  
+   c. `watch` - Subscribe to the changes happening to the KV store in real time.   
    d. `getall` - This displays all the available KV pairs in the store.  
   
 This project contains 2 python files and 1 pickle data file to handle data persistance.
