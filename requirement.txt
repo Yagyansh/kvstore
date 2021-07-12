@@ -1,5 +1,4 @@
 Flask
 gevent
 requests
-cmd
 socket
