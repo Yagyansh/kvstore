@@ -17,7 +17,6 @@ def dump_data_for_cache(store):
 #Helper to add KV pair to our store.
 @app.route('/add', methods=['POST'])
 def add_value():
-    global changed
     if 'key' and 'value' in request.args:
         key = str(request.args['key'])
         value = str(request.args['value'])
@@ -26,9 +25,14 @@ def add_value():
         if not key or not value:
             return "Error: Incomplete Input."
         else:
-            store[key] = value
-            dump_data_for_cache(store)
-            return "Successfully added Value - %s for Key - %s" % (store[key],key)
+            if key in store:                
+                store[key] = value
+                dump_data_for_cache(store)
+                return "Existing Key! Successfully changed the Value to - %s for Key - %s" % (store[key],key)
+            else:
+                store[key] = value
+                dump_data_for_cache(store)
+                return "Successfully added the Value - %s for Key - %s" % (store[key],key)
     else:
         return "Error: Improper input."
 
