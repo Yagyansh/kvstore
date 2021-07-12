@@ -19,7 +19,7 @@ This project contains 2 python files and 1 pickle data file to handle data persi
 
 ## Requirements
   Python 3.8.x and above.   
-  Libraries used - flask,cmd,requests,pickle,socket,gevent.  
+  Libraries used - flask, cmd, requests, pickle, sockets, gevent.  
 
 ## Installation and Usage
   Download the requirements file and install the required libraries using pip.  
@@ -67,10 +67,13 @@ This project contains 2 python files and 1 pickle data file to handle data persi
        `$ python3.8 kv-cli.py`  
         CLI Client to consume the KV Web API. Type help or ? to list commands. To exit press 'Ctrl + D' or fire 'quit' command.  
         ```
-        kvstore> help  
+         kvstore> help  
 
          Documented commands (type help <topic>):
          ========================================
          EOF  get  help  quit  put  watch getall  
-        kvstore>  
+         kvstore> help  
+         Get the value of the provided key.  
+         Syntax - get <key>  
+         kvstore>  
         ```
