@@ -2,6 +2,7 @@
 
 ## Overview
 Basic KV store web application & CLI Interface written in Python. It has 2 components:
+
 1. The WEB Server - This runs via Python flask web server and has 2 functionalites:  
    a. `/get` - This requires an input of the "key" value for which the value has to be retrieved from the KV store.  
    b. `/add` - This requires an input of the "key" and "value" that has to be added to the KV store.  
